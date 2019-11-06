@@ -1,10 +1,10 @@
 from django.core.management.base import BaseCommand, CommandError
 from telethon import TelegramClient
-from tr.settings import API_ID, SECRET_KEY
+from tr.settings import API_ID, SECRET_KEY, SESSION_NAME
 from main.models import Room
 
 #client = TelegramClient('zdimon_session',API_ID,SECRET_KEY)
-client = TelegramClient('session_name',API_ID,SECRET_KEY)
+client = TelegramClient(SESSION_NAME,API_ID,SECRET_KEY)
 
 def room_list():
     Room.objects.all().delete()

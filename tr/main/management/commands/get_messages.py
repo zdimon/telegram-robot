@@ -1,9 +1,9 @@
 from django.core.management.base import BaseCommand, CommandError
 from telethon import TelegramClient, events
-from tr.settings import API_ID, SECRET_KEY
-from main.models import Room, RoomMessage
+from tr.settings import API_ID, SECRET_KEY, SESSION_NAME
+from main.models import Room, RoomMessage, Keywords
 
-client = TelegramClient('session_name',API_ID,SECRET_KEY)
+client = TelegramClient(SESSION_NAME,API_ID,SECRET_KEY)
 
 def get_message_list(room):
     print('Process room %s' % room)
@@ -29,11 +29,12 @@ async def normal_handler(event):
     key = '100%s' % str(event.to_id.channel_id)
     print(key)
     room = Room.objects.get(id_key=key)
-    
     m = RoomMessage()
     m.room = room
     m.message = message['message']
     m.save()
+    for key in Keywords.objects.all():
+        print('searching %s' % key.name)
     print(message['message'])
     
 

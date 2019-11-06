@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Room, RoomMessage
+from .models import Room, RoomMessage, Keywords
 # Register your models here.
 
 class RoomAdmin(admin.ModelAdmin):
@@ -16,3 +16,10 @@ class RoomMessageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(RoomMessage, RoomMessageAdmin)
+
+class KeywordsAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+
+
+admin.site.register(Keywords, KeywordsAdmin)

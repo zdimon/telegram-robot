@@ -1,5 +1,5 @@
 venv
 *.pyc
-tr/session_name.session
-tr/zdimon_session.session
+tr/local.session
+tr/zdimon.session
 tr/tr/local.py

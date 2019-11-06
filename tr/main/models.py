@@ -14,3 +14,7 @@ class RoomMessage(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     message = models.TextField(null=True)
     sender_id = models.CharField(max_length=50)
+
+
+class Keywords(models.Model):
+    name = models.CharField(max_length=250)
