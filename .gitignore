@@ -1,1 +1,4 @@
 venv
+*.pyc
+tr/session_name.session
+tr/zdimon_session.session
