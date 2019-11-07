@@ -3,3 +3,4 @@ venv
 tr/local.session
 tr/zdimon.session
 tr/tr/local.py
+tr/zdimon.session-journal
