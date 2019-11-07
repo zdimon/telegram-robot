@@ -5,7 +5,7 @@ from django.db import models
 class Room(models.Model):
     id_key =  models.CharField(max_length=250)
     name =  models.CharField(max_length=250)
-    alias =  models.CharField(max_length=250, null=True)
+    alias =  models.CharField(max_length=250, null=True, blank=True, default='')
     is_active = models.BooleanField(default=False)
 
     def __str__(self):
@@ -13,7 +13,7 @@ class Room(models.Model):
 
 class RoomMessage(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    message = models.TextField(null=True)
+    message = models.TextField(null=True, blank=True)
     sender_id = models.CharField(max_length=50)
 
 
