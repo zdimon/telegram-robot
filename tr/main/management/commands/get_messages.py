@@ -20,7 +20,7 @@ def get_message_list(room):
 
 rooms = []
 for room in Room.objects.filter(is_active=True):
-    rooms.append(room.name)
+    rooms.append(room.alias)
 print(rooms)
 @client.on(events.NewMessage(chats=tuple(rooms)))
 async def normal_handler(event):

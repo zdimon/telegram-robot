@@ -12,6 +12,7 @@ def room_list():
         r = Room()
         r.id_key = str(room.id).replace('-','')
         r.name = room.name
+        r.alias = room.name
         r.save()
         print(room.name)
         #print('Saving in DB %s' % room.name)
