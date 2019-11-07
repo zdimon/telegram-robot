@@ -33,8 +33,15 @@ async def normal_handler(event):
     m.room = room
     m.message = message['message']
     m.save()
+
+    
     for key in Keywords.objects.all():
         print('searching %s' % key.name)
+        rez = message['message'].find(key.name)
+        print(rez)
+        if rez != -1:
+            send_message(message['message'])
+   
     print(message['message'])
     
 

@@ -3,9 +3,10 @@ from .models import Room, RoomMessage, Keywords
 # Register your models here.
 
 class RoomAdmin(admin.ModelAdmin):
-    list_display = ['name', 'id_key', 'is_active']
-    list_editable = ('is_active',)
+    list_display = ['name', 'id_key', 'alias', 'is_active']
+    list_editable = ('is_active', 'alias')
     search_fields = ['name']
+    list_filter = [ 'is_active' ]
 
 
 admin.site.register(Room, RoomAdmin)

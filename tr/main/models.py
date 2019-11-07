@@ -5,7 +5,7 @@ from django.db import models
 class Room(models.Model):
     id_key =  models.CharField(max_length=250)
     name =  models.CharField(max_length=250)
-    alias =  models.CharField(max_length=250)
+    alias =  models.CharField(max_length=250, null=True)
     is_active = models.BooleanField(default=False)
 
     def __str__(self):
