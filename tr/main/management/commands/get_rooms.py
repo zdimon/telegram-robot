@@ -26,6 +26,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         print('Running robot')
         client.start()
-        room_list()
+        #room_list()
         #client.run_until_disconnected()
         
