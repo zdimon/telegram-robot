@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 from telethon import TelegramClient
-from tr.settings import API_ID, SECRET_KEY, SESSION_NAME
+from tr.settings import API_ID, SECRET_KEY, SESSION_NAME, SESSION_ROOM_NAME
 from main.models import Room
 
 #client = TelegramClient('zdimon_session',API_ID,SECRET_KEY)
