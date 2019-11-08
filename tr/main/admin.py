@@ -4,7 +4,7 @@ from django.urls import path
 from django.http import HttpResponseRedirect
 # Register your models here.
 
-from tr.settings import API_ID, SECRET_KEY, SESSION_NAME
+from tr.settings import API_ID, SECRET_KEY, SESSION_NAME, SESSION_ROOM_NAME
 from main.models import Room
 from telethon import TelegramClient
 
