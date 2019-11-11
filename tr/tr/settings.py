@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'main',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -116,3 +117,9 @@ STATIC_URL = '/static/'
 
 
 from .local import *
+
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}

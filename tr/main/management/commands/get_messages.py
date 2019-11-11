@@ -46,7 +46,6 @@ async def normal_handler(event):
     user = await client.get_entity(event.from_id)
     print(user.username)
     key = '100%s' % str(event.to_id.channel_id)
-    #print(key)
     room = Room.objects.get(id_key=key)
     m = RoomMessage()
     m.room = room
@@ -64,13 +63,10 @@ async def normal_handler(event):
     print(message['message'])
     
 
-
-
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
         print('Getting messages')
         client.start()
-
         client.run_until_disconnected()
         

@@ -14,7 +14,7 @@ def room_list():
         r.name = room.name
         r.alias = room.name
         r.save()
-        print(room.name)
+        #print(room.name)
         #print('Saving in DB %s' % room.name)
 
 class Command(BaseCommand):

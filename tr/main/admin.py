@@ -9,10 +9,10 @@ from main.models import Room
 from telethon import TelegramClient
 
 client = TelegramClient(SESSION_ROOM_NAME,API_ID,SECRET_KEY)
-client.start()
+
 
 def import_channels():
-
+    client.start()
     for room in client.iter_dialogs():
         #print(room)
         try:
@@ -23,7 +23,8 @@ def import_channels():
             r.name = room.name
             r.alias = room.name
             r.save()
-
+    client.stop()
+    
 class RoomAdmin(admin.ModelAdmin):
     list_display = ['name', 'id_key', 'alias', 'is_active']
     list_editable = ('is_active', 'alias')
