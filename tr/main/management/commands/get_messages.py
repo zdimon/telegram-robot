@@ -1,10 +1,10 @@
 from django.core.management.base import BaseCommand, CommandError
 from telethon import TelegramClient, events
-from tr.settings import API_ID, SECRET_KEY, SESSION_NAME, REPORT_CHANNEL
+from tr.settings import API_ID, SECRET_KEY, SESSION_NAME, REPORT_CHANNEL, SESSION_SENDER_NAME
 from main.models import Room, RoomMessage, Keywords
 import asyncio
 client = TelegramClient(SESSION_NAME,API_ID,SECRET_KEY)
-client_sender = TelegramClient(SESSION_NAME,API_ID,SECRET_KEY)
+client_sender = TelegramClient(SESSION_SENDER_NAME,API_ID,SECRET_KEY)
 def get_message_list(room):
     print('Process room %s' % room)
     RoomMessage.objects.all().delete()
