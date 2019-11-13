@@ -9,11 +9,11 @@ from main.models import Room
 from telethon import TelegramClient
 
 client = TelegramClient(SESSION_ROOM_NAME,API_ID,SECRET_KEY)
-client.start()
-print('start telegram session %s' % SESSION_ROOM_NAME)
+
 
 def import_channels():
-    
+    client.start()
+    print('start telegram session %s' % SESSION_ROOM_NAME)    
 
     for room in client.iter_dialogs():
         #print(room)
