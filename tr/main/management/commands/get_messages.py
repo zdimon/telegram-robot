@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 from telethon import TelegramClient, events
-from tr.settings import API_ID, SECRET_KEY, SESSION_NAME
+from tr.settings import API_ID, SECRET_KEY, SESSION_NAME, REPORT_CHANNEL
 from main.models import Room, RoomMessage, Keywords
 import asyncio
 client = TelegramClient(SESSION_NAME,API_ID,SECRET_KEY)
@@ -22,7 +22,7 @@ def get_message_list(room):
 def send_message(message):
     try:
         async def do_send(message):
-            await client.send_message('test_group_wezom', message)
+            await client.send_message(REPORT_CHANNEL, message)
 
         client_sender.start()
         ioloop = asyncio.get_event_loop()
