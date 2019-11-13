@@ -47,12 +47,13 @@ async def normal_handler(event):
         user = await client.get_entity(event.from_id)
         print(user.username)
         key = '100%s' % str(event.to_id.channel_id)
+        print('search key %s' % key)
         room = Room.objects.get(id_key=key)
         m = RoomMessage()
         m.room = room
         m.message = message['message']
         m.save()
-
+        print('Saved message to %s' % room.name)
         
         for key in Keywords.objects.all():
             #print('searching %s' % key.name)
