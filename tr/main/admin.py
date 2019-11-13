@@ -25,7 +25,7 @@ def import_channels():
             r.name = room.name
             r.alias = room.name
             r.save()
-    client.stop()
+    #client.stop()
     
 class RoomAdmin(admin.ModelAdmin):
     list_display = ['name', 'id_key', 'alias', 'is_active']
