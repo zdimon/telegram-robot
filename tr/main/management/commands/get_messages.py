@@ -40,27 +40,30 @@ for room in Room.objects.filter(is_active=True):
 print(rooms)
 @client.on(events.NewMessage(chats=tuple(rooms)))
 async def normal_handler(event):
-    print('got message')
-    message = event.message.to_dict()
-    print(message['message'])
-    user = await client.get_entity(event.from_id)
-    print(user.username)
-    key = '100%s' % str(event.to_id.channel_id)
-    room = Room.objects.get(id_key=key)
-    m = RoomMessage()
-    m.room = room
-    m.message = message['message']
-    m.save()
+    try:
+        print('got message')
+        message = event.message.to_dict()
+        print(message['message'])
+        user = await client.get_entity(event.from_id)
+        print(user.username)
+        key = '100%s' % str(event.to_id.channel_id)
+        room = Room.objects.get(id_key=key)
+        m = RoomMessage()
+        m.room = room
+        m.message = message['message']
+        m.save()
 
+        
+        for key in Keywords.objects.all():
+            #print('searching %s' % key.name)
+            rez = message['message'].find(key.name)
+            #print(rez)
+            if rez != -1:
+                send_message('%s автор: @%s' % (message['message'],user.username))
     
-    for key in Keywords.objects.all():
-        #print('searching %s' % key.name)
-        rez = message['message'].find(key.name)
-        #print(rez)
-        if rez != -1:
-            send_message('%s автор: @%s' % (message['message'],user.username))
-   
-    print(message['message'])
+        print(message['message'])
+    except Exeption as e:
+        print(str(e))
     
 
 class Command(BaseCommand):
