@@ -7,15 +7,18 @@ from main.models import Room
 client = TelegramClient(SESSION_ROOM_NAME,API_ID,SECRET_KEY)
 
 def room_list():
-    Room.objects.all().delete()
+    #Room.objects.all().delete()
+
+
     for room in client.iter_dialogs():
-        r = Room()
-        r.id_key = str(room.id).replace('-','')
-        r.name = room.name
-        r.alias = room.name
-        r.save()
-        #print(room.name)
-        #print('Saving in DB %s' % room.name)
+        try:
+            Room.objects.get(name=room.name)
+        except:
+            r = Room()
+            r.id_key = str(room.id).replace('-','')
+            r.name = room.name
+            r.alias = room.name
+            r.save()
 
 class Command(BaseCommand):
     help = 'Running robot'
