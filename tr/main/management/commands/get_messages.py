@@ -46,6 +46,7 @@ async def normal_handler(event):
         print(message['message'])
         user = await client.get_entity(event.from_id)
         print(user.username)
+        print(message)
         key = '100%s' % str(event.to_id.channel_id)
         print('search key %s' % key)
         room = Room.objects.get(id_key=key)
