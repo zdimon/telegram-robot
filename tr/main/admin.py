@@ -8,13 +8,13 @@ from tr.settings import API_ID, SECRET_KEY, SESSION_NAME, SESSION_ROOM_NAME
 from main.models import Room
 from telethon import TelegramClient
 
-
-
+client = TelegramClient(SESSION_ROOM_NAME,API_ID,SECRET_KEY)
+client.start()
+print('start telegram session %s' % SESSION_ROOM_NAME)
 
 def import_channels():
-    print('start telegram session %s' % SESSION_ROOM_NAME)
-    client = TelegramClient(SESSION_ROOM_NAME,API_ID,SECRET_KEY)
-    client.start()
+    
+
     for room in client.iter_dialogs():
         #print(room)
         try:
